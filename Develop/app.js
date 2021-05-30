@@ -9,6 +9,8 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } = require("constants");
+const employees = [];
 
 // ===== START FUNCTION ===== 
 async function start(){
@@ -95,16 +97,9 @@ for(i = 1; i < teamSize; i++){
                 }
             ])
             .then((data) => {
-
                 // Create a new object with all avaiable user input data
                 const manager = new Manager(name, id, email, data.officeNo);
-
-                // Reads and places HTML from manager.html in teamMemever Variable
-                teamMember = fs.readFileSync("templates/manager.html");
-
-                // Uses eval() to pass template literals from html files.
-                // Adds the string to the team HTML.
-                teamHTML = teamHTML + "\n" + eval('`'+ teamMember +'`');
+                employees.push(manager);
             });
             break;
 
@@ -119,8 +114,7 @@ for(i = 1; i < teamSize; i++){
             ])
             .then((data) => {
                 const intern = new Intern(name, id, email, data.school);
-                teamMember = fs.readFileSync("templates/intern.html");
-                teamHTML = teamHTML + "\n" + eval('`'+ teamMember +'`');
+                employees.push(intern);
             });
             break;
 
@@ -135,8 +129,7 @@ for(i = 1; i < teamSize; i++){
             ])
             .then((data) => {
                 const engineer = new Engineer(name, id, email, data.github);
-                teamMember = fs.readFileSync("templates/engineer.html");
-                teamHTML = teamHTML + "\n" + eval('`'+ teamMember +'`');
+               employees.push(engineer);
             });
             break;
 
@@ -144,14 +137,17 @@ for(i = 1; i < teamSize; i++){
 
 } // End of For loop
 
+
+
 // Reads main.html and places html in a variable
-const mainHTML = fs.readFileSync("templates/main.html");
+//const mainHTML = fs.readFileSync("templates/main.html");
 
 // Use eval to implement template literals in main.html and places teamHTML inside main template
-teamHTML = eval('`'+ mainHTML +'`');
+//teamHTML = eval('`'+ mainHTML +'`');
+const htmlOutput = render(employees);
 
 // write file to new team.html file
-fs.writeFile("output/team.html", teamHTML, function(err) {
+fs.writeFile("output/team.html", htmlOutput, function(err) {
 
     if (err) {
       return console.log(err);
