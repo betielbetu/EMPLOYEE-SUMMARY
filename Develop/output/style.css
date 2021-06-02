@@ -1,4 +1,21 @@
+/* .body{
+    background-image: url("/Assets/back.jpg");
+    background-size: cover;  
+} */
+
+
+body {
+    background-image: url('/Assets/back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;  
+}  
+
+
 .card-header {
     background-color: blue;
     color: #fff;
+}
+
+.jumbotron {
+    background-color: red;
 }
