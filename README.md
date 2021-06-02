@@ -49,12 +49,10 @@ node app.js
 
 ### Deployment 
 
-You are required to submit the following:
 
 * The URL of the GitHub repository: https://github.com/betielbetu/EMPLOYEE-SUMMARY
 
-* A video demonstrating the entirety of the app's functionality: https://drive.google.com/file/d/17t4J8UwOlICBpcg51mVn6uYhgEIzGJoN/view
+* A video link: https://drive.google.com/file/d/17t4J8UwOlICBpcg51mVn6uYhgEIzGJoN/view
 
 
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
